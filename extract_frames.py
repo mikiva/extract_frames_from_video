@@ -1,6 +1,5 @@
 import cv2
 from PIL import Image, ImageStat
-import numpy as np
 from time import time
 import sys
 
