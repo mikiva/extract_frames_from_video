@@ -55,7 +55,7 @@ def generate_image(number_of_frames, pieces, width, interval):
     cap.release()
 
 
-
+# TODO: Dela upp relativt till antal frames
 def split_frames_in_parts(number_of_frames):
     parts = 10
     return parts
