@@ -6,6 +6,7 @@ from glob import glob
 
 
 directory = sys.argv[2]
+export_dir = sys.argv[3]
 interval = 1
 def get_part(width):
     new_img = Image.new("RGB", (width, 10))
@@ -71,6 +72,7 @@ def get_number_of_frames():
 def puzzle_together(pieces, width):
     img_list = []
     global directory
+    global export_dir
     print directory
     for filename in glob('%s/*.png' % directory):
         img = Image.open(filename)
@@ -85,7 +87,7 @@ def puzzle_together(pieces, width):
         new_img.paste(image, ((width*index),0))
 
     new_img = new_img.resize((8000,1000), Image.ANTIALIAS)
-    img_filename = "export/img%d.png" % time()
+    img_filename = "%s_%d.png" % (export_dir, time())
     new_img.save(img_filename)
 
 
@@ -96,9 +98,9 @@ def get_width(number_of_frames, pieces, interval):
 
 def get_interval(number_of_frames):
 
-    if ( number_of_frames < 15000):
+    if (number_of_frames < 15000):
         return 1
-    for x in range(1,200):
+    for x in range(1, 200):
         if int(number_of_frames / x) < 15000 and number_of_frames % x < 20:
             return x
     return 10
@@ -106,6 +108,7 @@ def get_interval(number_of_frames):
 try:
     film = sys.argv[1]
 
+    print "FILM: %s" % film
 
     total_number_of_frames = get_number_of_frames()
     interval = get_interval(total_number_of_frames)
