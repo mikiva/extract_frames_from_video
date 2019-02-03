@@ -1,1 +1,1 @@
-"python exctract_frames.py <videofil> <export_png_directory> <export_image_directory>"
+python exctract_frames.py videofil export_png_directory export_image_directory
