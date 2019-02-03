@@ -101,7 +101,7 @@ def get_interval(number_of_frames):
     for x in range(1,200):
         if int(number_of_frames / x) < 15000 and number_of_frames % x < 20:
             return x
-
+    return 10
 
 try:
     film = sys.argv[1]
